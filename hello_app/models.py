@@ -4,6 +4,7 @@ from django.db import models
 class Customer(models.Model):
     name = models.CharField(max_length=100)
     phone_number = models.SmallIntegerField
+    email = models.EmailField(default=None)
 
 class Transaction(models.Model):
     customer = models.ForeignKey
