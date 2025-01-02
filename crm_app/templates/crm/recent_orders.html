@@ -1,7 +1,7 @@
 {% if latest_order_list %}
     <ul>
     {% for order in latest_order_list %}
-        <li><a href="/crm/{{ order.id }}/">{{ str(order) }}</a></li>
+        <li><a href="/crm/{{ order.id }}/">{{ order }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
