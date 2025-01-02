@@ -9,9 +9,7 @@ from .models import Transaction, Customer
 def index(request):
     return HttpResponse("Hello, world. You're at the hello index.")
 
-def detail(request, transaction_id):
-    transaction = get_object_or_404(Transaction, pk=transaction_id)
-    return render(request, "crm/detail.html", {"transaction": transaction})
+
 
 class DetailView(generic.DetailView):
     model = Transaction
