@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 
+from django.db.models import F
 from django.http import HttpResponse
 from django.views import generic
 from .models import Transaction, Customer
@@ -14,11 +15,7 @@ def detail(request, transaction_id):
 
 class DetailView(generic.DetailView):
     model = Transaction
-    template_name = "polls/detail.html"
-
-def customer_detail(request, customer_id):
-    customer = get_object_or_404(Customer, pk=customer_id)
-    return render(request, "crm/customer_detail.html", {"customer": customer})
+    template_name = "crm/detail.html"
 
 def recent_orders(request):
     latest_order_list = Transaction.objects.order_by("transaction_datetime")[:5]
