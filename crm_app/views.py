@@ -1,8 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 
 from django.http import HttpResponse
-from django.template import loader
-
+from django.views import generic
 from .models import Transaction, Customer
 
 
@@ -12,6 +11,10 @@ def index(request):
 def detail(request, transaction_id):
     transaction = get_object_or_404(Transaction, pk=transaction_id)
     return render(request, "crm/detail.html", {"transaction": transaction})
+
+class DetailView(generic.DetailView):
+    model = Transaction
+    template_name = "polls/detail.html"
 
 def customer_detail(request, customer_id):
     customer = get_object_or_404(Customer, pk=customer_id)
