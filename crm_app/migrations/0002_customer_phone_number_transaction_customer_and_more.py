@@ -7,7 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('hello_app', '0001_initial'),
+        ('crm_app', '0001_initial'),
     ]
 
     operations = [
@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='transaction',
             name='customer',
-            field=models.ForeignKey(default=None, on_delete=django.db.models.deletion.CASCADE, to='hello_app.customer'),
+            field=models.ForeignKey(default=None, on_delete=django.db.models.deletion.CASCADE, to='crm_app.customer'),
         ),
         migrations.AddField(
             model_name='transaction',

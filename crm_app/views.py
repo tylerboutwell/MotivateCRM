@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 from django.http import HttpResponse
+from django.template import loader
 from .models import Transaction
 
 
@@ -12,5 +13,8 @@ def detail(request, user_id):
 
 def recent_orders(request):
     latest_order_list = Transaction.objects.order_by("transaction_datetime")[:5]
-    output = ", ".join([str(o) for o in latest_order_list])
-    return HttpResponse(output)
+    template = loader.get_template("crm\recent_orders.html")
+    context = {
+        "latest_order_list": latest_order_list
+    }
+    return HttpResponse(template.render(context, request))
