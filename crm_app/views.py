@@ -4,6 +4,7 @@ from django.db.models import F
 from django.http import HttpResponse
 from django.views import generic
 from .models import Transaction, Customer
+from django.utils import timezone
 
 
 def index(request):
@@ -22,4 +23,4 @@ class recent_orders_generic(generic.ListView):
     context_object_name = "latest_order_list"
 
     def get_queryset(self):
-        return Transaction.objects.order_by("transaction_datetime")[:5]
+        return Transaction.objects.filter(transaction_datetime__lte=timezone.now()).order_by("transaction_datetime")[:5]
