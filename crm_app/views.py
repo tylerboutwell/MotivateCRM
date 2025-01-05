@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404
 
-from django.db.models import F
 from django.http import HttpResponse
 from django.views import generic
 from .models import Transaction, Customer
@@ -8,7 +7,7 @@ from django.utils import timezone
 
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the hello index.")
+    return render(request, 'crm\home.html')
 
 class DetailView(generic.DetailView):
     model = Transaction
