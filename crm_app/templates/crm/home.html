@@ -1,7 +1,10 @@
 {%extends 'crm\base.html'%}
 
 {%block content%}
+{% load static %}
 
-<h1>Home Page</h1>
+<link rel="stylesheet" href="{% static 'crm/style.css' %}">
+
+<h1 class = "text-light">Home Page</h1>
 
 {%endblock%}
