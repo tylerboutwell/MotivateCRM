@@ -6,8 +6,6 @@ from ..models import Transaction, Customer
 from django.utils import timezone
 
 
-def index(request):
-    return render(request, 'crm\home.html')
 
 class DetailView(generic.DetailView):
     model = Transaction

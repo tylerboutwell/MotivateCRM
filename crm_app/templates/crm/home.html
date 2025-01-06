@@ -5,6 +5,34 @@
 
 <link rel="stylesheet" href="{% static 'crm/style.css' %}">
 
-<h1 class = "text-light">Home Page</h1>
+{% if user.is_authenticated %}
 
-{%endblock%}
+    <h1 class="text-light">Hello!</h1>
+
+{% else %}
+
+    <h1 class = "text-light">Login</h1>
+    <br/>
+
+    <form method="post" action="{%url 'crm_app:home' %}" class="text-light">
+        {% csrf_token %}
+
+        <form>
+            <div class="form-group">
+            <label for="exampleInputEmail1">Username</label>
+            <input type="text" class="form-control" name = "username" placeholder="Enter username" required>
+            </div>
+            <br/>
+            <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" name = "password" placeholder="Enter password" required>
+            </div>
+            <br/>
+            <button type="submit" class="btn btn-secondary">Submit</button>
+        </form>
+
+    </form>
+
+{% endif %}
+
+{% endblock %}
