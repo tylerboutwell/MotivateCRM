@@ -18,7 +18,9 @@ def home(request):
         return render(request, 'crm/home.html', {})
 
 def logout_user(request):
-    pass
+    logout(request)
+    messages.success(request, "You have been logged out.")
+    return redirect('crm_app:home')
 
 def register(request):
     pass
