@@ -6,30 +6,45 @@
 <link rel="stylesheet" href="{% static 'crm/style.css' %}">
 
 {% if user.is_authenticated %}
+<h1 class="text-light">Customers</h1>
 
-    <h1 class="text-light">Hello!</h1>
-
+    {%if customers%}
+    <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for customer in customers%}
+            <td>{{customer.name}}</td>
+            <td>{{customer.phone_number}}</td>
+            <td>{{customer.email}}</td>
+        {%endfor%}
+        </tbody>
+      </table>
+    {%endif%}
 {% else %}
 
     <h1 class = "text-light">Login</h1>
     <br/>
 
     <form method="post" action="{%url 'crm_app:home' %}" class="text-light">
+        
         {% csrf_token %}
-
-        <form>
-            <div class="form-group">
-            <label for="exampleInputEmail1">Username</label>
-            <input type="text" class="form-control" name = "username" placeholder="Enter username" required>
-            </div>
-            <br/>
-            <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" name = "password" placeholder="Enter password" required>
-            </div>
-            <br/>
-            <button type="submit" class="btn btn-secondary">Submit</button>
-        </form>
+        <div class="form-group">
+        <label for="exampleInputEmail1">Username</label>
+        <input type="text" class="form-control" name = "username" placeholder="Enter username" required>
+        </div>
+        <br/>
+        <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" name = "password" placeholder="Enter password" required>
+        </div>
+        <br/>
+        <button type="submit" class="btn btn-secondary">Submit</button>
 
     </form>
 
