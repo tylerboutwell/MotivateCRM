@@ -13,16 +13,17 @@
             <thead>
             <tr>
                 <th scope="col">Name</th>
-                <th scope="col">Phone Number</th>
-                <th scope="col">Email</th>
+                <th scope="col">Total</th>
+                <th scope="col">Transaction date, time</th>
                 <th scope="col">ID</th>
             </tr>
             </thead>
-            {% for transactioni in transactions%}
+            {% for transaction in transactions%}
                 <tbody>
-                <td>{{transactioni.customer}}</td>
-                <td>{{transactioni.total}}</td>
-                <td>{{transactioni.transaction_datetime}}</td>
+                <td>{{transaction.customer}}</td>
+                <td>${{transaction.total}}</td>
+                <td>{{transaction.transaction_datetime}}</td>
+                <td>{{transaction.id}}</td>
                 </tbody>
             {%endfor%}
         </table>
