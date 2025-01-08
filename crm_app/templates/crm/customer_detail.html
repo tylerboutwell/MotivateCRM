@@ -1,6 +1,10 @@
-<h1>{{ customer.name }}</h1>
-<ul>
-{% for transaction in customer.transaction_set.all %}
-    <li>{{ transaction }}</li>
-{% endfor %}
-</ul>
+{%if user.is_authenticated%}
+    <h1>{{ customer.name }}</h1>
+    <ul>
+    {% for transaction in customer.transaction_set.all %}
+        <li>{{ transaction }}</li>
+    {% endfor %}
+    </ul>
+{%else%}
+<h1>You are not logged in.</h1>
+{%endif%}

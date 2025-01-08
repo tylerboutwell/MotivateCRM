@@ -9,21 +9,24 @@
 <h1 class="text-light">Customers</h1>
 
     {%if customers%}
-    <table class="table table-dark">
+    <table class="table table-hover table-dark">
         <thead>
           <tr>
             <th scope="col">Name</th>
             <th scope="col">Phone Number</th>
             <th scope="col">Email</th>
+            <th scope="col">ID</th>
           </tr>
         </thead>
+        
+        {% for customer in customers%}
         <tbody>
-          {% for customer in customers%}
-            <td>{{customer.name}}</td>
-            <td>{{customer.phone_number}}</td>
-            <td>{{customer.email}}</td>
-        {%endfor%}
+        <td>{{customer.name}}</td>
+        <td>{{customer.phone_number}}</td>
+        <td>{{customer.email}}</td>
+        <td>{{customer.id}}</td>
         </tbody>
+        {%endfor%}
       </table>
     {%endif%}
 {% else %}
