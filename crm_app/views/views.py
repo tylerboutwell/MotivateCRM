@@ -1,9 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect
 
-from django.http import HttpResponse
 from django.views import generic
 from ..models import Transaction, Customer
 from django.utils import timezone
+from django.contrib.auth.models import User
+from django.contrib import messages
 
 
 
@@ -11,9 +12,14 @@ class DetailView(generic.DetailView):
     model = Transaction
     template_name = "crm/detail.html"
 
-class CustomerDetailView(generic.DetailView):
-    model = Customer
-    template_name = "crm/customer_detail.html"
+def CustomerView(request, pk):
+    if User.is_authenticated:
+        transactions = Transaction.objects.all().filter(customer__id=pk)
+        return render(request, 'crm/customer_detail.html', {'transactions': transactions})
+    else:
+        messages.success(request, "You must be logged in.")
+        return redirect('user_views/home')
+        
 
 class recent_orders_generic(generic.ListView):
     template_name = "crm/recent_orders.html"
