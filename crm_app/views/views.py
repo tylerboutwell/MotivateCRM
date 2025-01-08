@@ -13,12 +13,12 @@ class DetailView(generic.DetailView):
     template_name = "crm/detail.html"
 
 def CustomerView(request, pk):
-    if User.is_authenticated:
+    if request.user.is_authenticated:
         transactions = Transaction.objects.all().filter(customer__id=pk)
         return render(request, 'crm/customer_detail.html', {'transactions': transactions})
     else:
         messages.success(request, "You must be logged in.")
-        return redirect('user_views/home')
+        return redirect('crm_app:home')
         
 
 class recent_orders_generic(generic.ListView):
