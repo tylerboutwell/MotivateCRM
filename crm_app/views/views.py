@@ -38,7 +38,14 @@ def TransactionView(request, pk):
         messages.success(request, "You must be logged in to view this page.")
         return redirect('crm_app:home')
         
-
+def Customers(request):
+    customers = Customer.objects.all()
+    if request.user.is_authenticated:
+        return render(request, 'crm/customers.html', {'customers':customers})
+    else:
+        messages.success(request, "You must be logged in to view this page.")
+        return redirect('crm_app:home')
+    
 class transactions(generic.ListView):
     template_name = "crm/transactions.html"
     context_object_name = "transactions"
