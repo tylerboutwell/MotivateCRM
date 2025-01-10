@@ -39,9 +39,9 @@ def TransactionView(request, pk):
         return redirect('crm_app:home')
         
 
-class recent_orders_generic(generic.ListView):
-    template_name = "crm/recent_orders.html"
-    context_object_name = "latest_order_list"
+class transactions(generic.ListView):
+    template_name = "crm/transactions.html"
+    context_object_name = "transactions"
 
     def get_queryset(self):
         return Transaction.objects.filter(transaction_datetime__lte=timezone.now()).order_by("transaction_datetime")[:5]

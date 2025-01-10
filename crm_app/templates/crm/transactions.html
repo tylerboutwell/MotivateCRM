@@ -1,0 +1,32 @@
+{%extends 'crm\base.html'%}
+{%block content%}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'crm/style.css' %}">
+
+<h1 class="text-light">Transactions</h1>
+
+{%if transactions%}
+            <table class="table table-hover table-light">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Transaction date, time</th>
+                    <th scope="col">Transaction ID</th>
+                </tr>
+                </thead>
+                {% for transaction in transactions %}
+                    <tbody>
+                    <td>{{transaction.customer}}</td>
+                    <td>${{transaction.total}}</td>
+                    <td>{{transaction.transaction_datetime}}</td>
+                    <td><a href="{%url 'crm_app:transaction detail' transaction.id%}">{{transaction.id}}</a></td>
+                    </tbody>
+                {%endfor%}
+            </table>
+        {% else %}
+            <h1 class="text-light">No transactions for this user.</h1>
+        {% endif %}
+
+{%endblock%}

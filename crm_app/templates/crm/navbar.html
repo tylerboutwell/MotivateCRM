@@ -10,7 +10,7 @@
             <a class="nav-link active" aria-current="page" href="#">Customers</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Transactions</a>
+            <a class="nav-link" href="{%url 'crm_app:transactions'%}">Transactions</a>
           </li>
           </li>
           {%if user.is_authenticated%}
