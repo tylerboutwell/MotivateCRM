@@ -19,6 +19,14 @@ def CustomerView(request, pk):
     else:
         messages.success(request, "You must be logged in to view this page.")
         return redirect('crm_app:home')
+    
+def TransactionView(request, pk):
+    if request.user.is_authenticated:
+        transaction = Transaction.objects.get(id=pk)
+        return render(request, 'crm/transaction_detail.html', {'transaction': transaction})
+    else:
+        messages.success(request, "You must be logged in to view this page.")
+        return redirect('crm_app:home')
         
 
 class recent_orders_generic(generic.ListView):

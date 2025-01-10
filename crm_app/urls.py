@@ -8,5 +8,6 @@ urlpatterns = [
     path("<int:pk>/", views.DetailView.as_view(), name="detail"),
     path("recent_orders/", views.recent_orders_generic.as_view(), name="recent orders"),
     path("customer/<int:pk>/", views.CustomerView, name="customer detail"),
+    path("transaction/<int:pk>/", views.TransactionView, name="transaction detail"),
     path("logout/", user_views.logout_user, name="logout"),
 ]
