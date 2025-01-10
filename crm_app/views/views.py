@@ -21,6 +21,15 @@ def CustomerView(request, pk):
         messages.success(request, "You must be logged in to view this page.")
         return redirect('crm_app:home')
     
+def CustomerTransactionsView(request, pk):
+    if request.user.is_authenticated:
+        transactions = Transaction.objects.filter(customer__id=pk)
+        customer = Customer.objects.get(id=pk)
+        return render(request, 'crm/customer_transactions.html', {'transactions': transactions, 'customer': customer})
+    else:
+        messages.success(request, "You must be logged in to view this page.")
+        return redirect('crm_app:home')
+    
 def TransactionView(request, pk):
     if request.user.is_authenticated:
         transaction = Transaction.objects.get(id=pk)
