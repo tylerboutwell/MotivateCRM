@@ -23,12 +23,12 @@
                 <td>{{transaction.customer}}</td>
                 <td>${{transaction.total}}</td>
                 <td>{{transaction.transaction_datetime}}</td>
-                <td>{{transaction.id}}</td>
+                <td><a href="{%url 'crm_app:customer detail' transaction.customer.id%}">{{transaction.id}}</a></td>
                 </tbody>
             {%endfor%}
         </table>
     {% else %}
-        <h1>No transactions for this user.</h1>
+        <h1 class="text-light">No transactions for this user.</h1>
     {% endif %}
 
 {% endblock %}

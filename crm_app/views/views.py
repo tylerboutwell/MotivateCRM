@@ -14,10 +14,10 @@ class DetailView(generic.DetailView):
 
 def CustomerView(request, pk):
     if request.user.is_authenticated:
-        transactions = Transaction.objects.all().filter(customer__id=pk)
+        transactions = Transaction.objects.filter(customer__id=pk)
         return render(request, 'crm/customer_detail.html', {'transactions': transactions})
     else:
-        messages.success(request, "You must be logged in.")
+        messages.success(request, "You must be logged in to view this page.")
         return redirect('crm_app:home')
         
 
