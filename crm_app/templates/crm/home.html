@@ -24,7 +24,7 @@
         <td>{{customer.name}}</td>
         <td>{{customer.phone_number}}</td>
         <td>{{customer.email}}</td>
-        <td>{{customer.id}}</td>
+        <td><a href="{%url 'crm_app:customer detail' customer.id%}">{{customer.id}}</a></td>
         </tbody>
         {%endfor%}
       </table>
