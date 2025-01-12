@@ -23,7 +23,7 @@
             <p class="card-text"><strong>Phone Number: </strong>{{customer.phone_number}}</p>
             <p class="card-text"><strong>User ID: </strong>{{customer.id}}</p>
             <a href="{%url 'crm_app:home'%}" class="btn btn-secondary">Back</a>
-            <a href="#" class ="btn btn-danger">Delete</a>
+            <a href="{%url 'crm_app:delete customer' customer.id%}" class ="btn btn-danger">Delete</a>
             </div>
         </div>
     {%endif%}

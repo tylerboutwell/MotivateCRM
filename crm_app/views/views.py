@@ -52,3 +52,13 @@ class transactions(generic.ListView):
 
     def get_queryset(self):
         return Transaction.objects.filter(transaction_datetime__lte=timezone.now()).order_by("-transaction_datetime")
+    
+def DeleteCustomer(request, pk):
+    if request.user.is_authenticated:
+        customer = Customer.objects.get(id=pk)
+        customer.delete()
+        messages.success(request, "Customer has been deleted")
+        return redirect('crm_app:home')
+    else:
+        messages.success(request, "You must be logged in to delete data.")
+        return redirect('crm_app:home')

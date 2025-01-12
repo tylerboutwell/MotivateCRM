@@ -9,6 +9,7 @@ urlpatterns = [
     path("transactions/", views.transactions.as_view(), name="transactions"),
     path("customers/", views.Customers, name="customers"),
     path("customer/<int:pk>/", views.CustomerView, name="customer detail"),
+    path("delete_customer/<int:pk>:", views.DeleteCustomer, name = "delete customer"),
     path("customer/<int:pk>/transactions", views.CustomerTransactionsView, name="customer transactions"),
     path("transaction/<int:pk>/", views.TransactionView, name="transaction detail"),
     path("logout/", user_views.logout_user, name="logout"),
