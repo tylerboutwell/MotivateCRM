@@ -51,4 +51,4 @@ class transactions(generic.ListView):
     context_object_name = "transactions"
 
     def get_queryset(self):
-        return Transaction.objects.filter(transaction_datetime__lte=timezone.now()).order_by("transaction_datetime")[:5]
+        return Transaction.objects.filter(transaction_datetime__lte=timezone.now()).order_by("-transaction_datetime")
