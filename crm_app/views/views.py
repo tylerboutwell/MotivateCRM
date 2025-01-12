@@ -5,6 +5,7 @@ from ..models import Transaction, Customer
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.contrib import messages
+from ..forms import AddCustomerForm
 
 
 
