@@ -63,3 +63,16 @@ def DeleteCustomer(request, pk):
     else:
         messages.success(request, "You must be logged in to delete data.")
         return redirect('crm_app:home')
+    
+def AddCustomer(request):
+    form = AddCustomerForm(request.POST or None)
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            if form.is_valid():
+                add_customer = form.save()
+                messages.success(request, "Customer successfully added.")
+                return redirect('crm_app:customers')
+        return render(request, 'crm/add_customer.html', {'form': form})
+    else:
+        messages.success(request, "You must be logged in to add a customer.")
+        return redirect('crm_app:home')

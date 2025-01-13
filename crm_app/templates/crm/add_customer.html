@@ -1,0 +1,23 @@
+{%extends 'crm\base.html'%}
+
+{% block content %}
+{%load static%}
+<link rel="stylesheet" href="{% static 'crm/style.css' %}">
+
+<div class="col-md-6 offset-md-3">
+<h1 class="text-light">Add Customer</h1>
+<br/>
+
+<form method="POST" action="{%url 'crm_app:add customer'%}">
+{% csrf_token %}
+
+{{form.as_p}}
+<br/>
+
+<button type="submit" class="btn btn-secondary">Add Customer</button>
+
+</form>
+
+</div>
+
+{%endblock%}
