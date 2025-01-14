@@ -5,7 +5,7 @@ from ..models import Transaction, Customer
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.contrib import messages
-from ..forms import AddCustomerForm
+from ..forms import AddCustomerForm, AddTransactionForm
 
 
 
@@ -75,4 +75,17 @@ def AddCustomer(request):
         return render(request, 'crm/add_customer.html', {'form': form})
     else:
         messages.success(request, "You must be logged in to add a customer.")
+        return redirect('crm_app:home')
+    
+def AddTransaction(request):
+    form = AddTransactionForm(request.POST or None)
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            if form.is_valid():
+                add_transaction = form.save()
+                messages.success(request, "Transaction successfully added.")
+                return redirect('crm_app:transactions')
+        return render(request, 'crm/add_transaction.html', {'form': form})
+    else:
+        messages.success(request, "You must be logged in to add a transaction.")
         return redirect('crm_app:home')
