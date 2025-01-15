@@ -8,8 +8,8 @@
         Transaction
         </div>
         <div class="card-body">
-        <h5 class="card-title">{{customer.name}}</h5>
-        <p class="card-text"><strong>Name: </strong>{{transaction.customer.name}}</p>
+        <h5 class="card-title">{{customer.first_name}}  {{customer.last_name}}</h5>
+        <p class="card-text"><strong>Name: </strong>{{transaction.customer.first_name transaction.customer.last_name}}</p>
         <p class="card-text"><strong>Total: </strong>${{transaction.total}}</p>
         <p class="card-text"><strong>Transaction date, time: </strong>{{transaction.transaction_datetime}}</p>
         <p class="card-text"><strong>Transaction ID: </strong>{{transaction.id}}</p>

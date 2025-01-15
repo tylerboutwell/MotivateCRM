@@ -3,7 +3,7 @@ from django.contrib import admin
 from .models import Customer, Transaction
 
 class CustomerAdmin(admin.ModelAdmin):
-    list_display = ["name", "phone_number", "email"]
+    list_display = ["first_name", "last_name", "phone_number", "email"]
     search_fields = ["phone_number", "email"]
 
 class TransactionAdmin(admin.ModelAdmin):

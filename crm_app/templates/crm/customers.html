@@ -17,7 +17,7 @@
     
     {% for customer in customers%}
     <tbody>
-    <td>{{customer.name}}</td>
+    <td>{{customer.first_name}}  {{customer.last_name}}</td>
     <td>{{customer.phone_number}}</td>
     <td>{{customer.email}}</td>
     <td><a href="{%url 'crm_app:customer detail' customer.id%}">{{customer.id}}</a></td>
