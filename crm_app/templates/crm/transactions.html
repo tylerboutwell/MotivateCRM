@@ -18,7 +18,7 @@
                     <td>{{transaction.customer.first_name}}  {{transaction.customer.last_name}}</td>
                     <td>${{transaction.total}}</td>
                     <td>{{transaction.transaction_datetime}}</td>
-                    <td><a href="{%url 'crm_app:transaction detail' transaction.id%}">{{transaction.id}}</a></td>
+                    <td><a class="text-primary" href="{%url 'crm_app:transaction detail' transaction.id%}">{{transaction.id}}</a></td>
                     </tbody>
                 {%endfor%}
             </table>
