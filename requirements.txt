@@ -2,3 +2,5 @@ Django
 psycopg[binary]
 python-dotenv
 django-debug-toolbar
+django-crispy-forms
+crispy-bootstrap5
