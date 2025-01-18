@@ -19,7 +19,7 @@ class AddCustomerForm(forms.ModelForm):
         exclude = ("user",)
 
 class AddTransactionForm(forms.ModelForm):
-    customer = forms.ModelChoiceField(queryset=Customer.objects.all(), required=True,empty_label="--Select Customer--", label="")
+    customer = forms.ModelChoiceField(queryset=Customer.objects.all(), required=True,empty_label="-- Select Customer --", label="")
     total = forms.IntegerField(required=True, widget=forms.widgets.NumberInput(attrs={"placeholder": "Total", "class": "form-control"}), label="")
     transaction_datetime = forms.DateTimeField(required=True, widget=forms.widgets.DateTimeInput(attrs={"type": "datetime-local", "class": "form-control"}), initial=timezone.now(),label="")
 
