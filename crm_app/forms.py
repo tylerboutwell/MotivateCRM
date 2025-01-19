@@ -4,7 +4,7 @@ from django import forms
 from .models import Customer, Transaction
 from django.utils import timezone
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Fieldset, Submit
+from crispy_forms.layout import Layout, Submit, Field
 
 class AddCustomerForm(forms.ModelForm):
     first_name = forms.CharField(
@@ -52,7 +52,7 @@ class AddCustomerForm(forms.ModelForm):
     postal_code = forms.CharField(
         required=True, 
         widget=forms.widgets.TextInput(attrs={"placeholder": "Postal Code", "class": "form-control",}), 
-        label="Postal Code"
+        label="Postal Code",
         )
     
 
@@ -65,8 +65,8 @@ class AddCustomerForm(forms.ModelForm):
         self.helper = FormHelper(self)
 
         self.helper.form_class= 'form-horizontal'
-        self.helper.label_class='col-lg-2'
-        self.helper.field_class = 'col-lg-8'
+        self.helper.label_class='col-lg-2 text-light'
+        self.helper.field_class = 'col-lg-9'
         self.helper.layout = Layout(
             'first_name',
             'last_name',
@@ -76,6 +76,7 @@ class AddCustomerForm(forms.ModelForm):
             'city',
             'state',
             'postal_code',
+            Submit('submit', 'Add Customer', css_class='btn')
         )
 
 class AddTransactionForm(forms.ModelForm):
