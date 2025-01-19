@@ -10,7 +10,7 @@
 <form method="POST" action="{%url 'crm_app:add customer'%}">
     {% csrf_token %}
 
-    <div>
+    <div class="form-row">
     {{form | crispy}}
     </br>
     <button type="submit" class="btn btn-secondary">Add Customer</button>
