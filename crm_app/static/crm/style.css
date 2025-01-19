@@ -1,3 +1,7 @@
 body {
-    background: white url("https://bootswatch.com/5/quartz/bootstrap.min.css") no-repeat;
+    background-image: url(images/background-pic.jpg);
+}
+
+.asteriskField {
+    display: none;
 }
