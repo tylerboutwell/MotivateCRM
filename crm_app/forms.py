@@ -76,7 +76,7 @@ class AddCustomerForm(forms.ModelForm):
             'city',
             'state',
             'postal_code',
-            Submit('submit', 'Add Customer', css_class='btn')
+            Submit('submit', 'Add Customer', css_class='btn d-block m-auto',)
         )
 
 class AddTransactionForm(forms.ModelForm):
