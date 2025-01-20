@@ -3,18 +3,20 @@
 {%block content%}
 
     {%if transaction%}
-    <div class="card text-center">
+    <div class="card text-white bg-primary mb-3 text-center">
         <div class="card-header">
-        Transaction
+        Transaction ID #{{transaction.id}}
         </div>
         <div class="card-body">
         <h5 class="card-title">{{customer.first_name}}  {{customer.last_name}}</h5>
         <p class="card-text"><strong>Name: </strong>{{transaction.customer.first_name}} {{transaction.customer.last_name}}</p>
         <p class="card-text"><strong>Total: </strong>${{transaction.total}}</p>
-        <p class="card-text"><strong>Transaction date, time: </strong>{{transaction.transaction_datetime}}</p>
-        <p class="card-text"><strong>Transaction ID: </strong>{{transaction.id}}</p>
-        <a href="{%url 'crm_app:transactions'%}" class="btn btn-secondary">Back</a>
+        <p class="card-text"><strong>Description: </strong>{{transaction.description}}</p>
+        <a href="{%url 'crm_app:transactions'%}" class="btn btn-light">Back</a>
         <a href="#" class ="btn btn-danger">Delete</a>
+        </div>
+        <div class="card-footer text-body-secondary">
+            {{transaction.transaction_datetime}}
         </div>
     </div>
     {% else %}
