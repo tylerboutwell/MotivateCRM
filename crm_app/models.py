@@ -5,7 +5,7 @@ from django.utils import timezone
 class Customer(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    phone_number = models.PositiveBigIntegerField()
+    phone_number = models.CharField()
     email = models.EmailField(default=None)
     address = models.CharField(max_length=100)
     city = models.CharField(max_length=100)

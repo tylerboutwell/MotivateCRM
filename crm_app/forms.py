@@ -27,7 +27,7 @@ class AddCustomerForm(forms.ModelForm):
     
     email = forms.CharField(
         required=True, 
-        widget=forms.widgets.TextInput(attrs={"placeholder": "Email", "class": "form-control",}), 
+        widget=forms.widgets.EmailInput(attrs={"placeholder": "Email", "class": "form-control",}), 
         label="Email address"
         )
     
