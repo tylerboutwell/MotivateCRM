@@ -65,7 +65,7 @@ class AddCustomerForm(forms.ModelForm):
         self.helper = FormHelper(self)
 
         self.helper.form_class= 'form-horizontal'
-        self.helper.label_class='col-lg-1 badge align-self-center'
+        self.helper.label_class='col-lg-1 badge align-self-center border-bottom border-secondary'
         self.helper.field_class = 'col-lg-9'
         self.helper.layout = Layout(
             'first_name',

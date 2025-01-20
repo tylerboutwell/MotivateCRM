@@ -2,7 +2,7 @@
 
 {%block content%}
 
-<h1 class="text-light">Customers</h1>
+<h1 class="text-light display-1 text-center">Customers</h1>
 
 {%if customers%}
 <table class="table table-hover table-light">
@@ -24,7 +24,7 @@
     </tbody>
     {%endfor%}
     </table>
-    <a class="btn btn-primary" href="{%url 'crm_app:add customer'%}" role="button">Add Customer</a>
+    <a class="btn btn-primary m-auto" href="{%url 'crm_app:add customer'%}" role="button">Add Customer</a>
 {%endif%}
 
 

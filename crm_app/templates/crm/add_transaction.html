@@ -4,7 +4,7 @@
 {% block content %}
 
 <div class="col-md-6 offset-md-3">
-<h1 class="text-light">Add Transaction</h1>
+<h1 class="text-light display-1 text-center">Add Transaction</h1>
 <br/>
 
 <form method="POST" class="text-light" action="{%url 'crm_app:add transaction'%}">
@@ -13,7 +13,7 @@
 {{form | crispy}}
 <br/>
 
-<button type="submit" class="btn btn-primary">Add Transaction</button>
+<button type="submit" class="btn btn-primary d-block m-auto">Add Transaction</button>
 
 </form>
 
