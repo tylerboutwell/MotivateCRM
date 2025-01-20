@@ -18,6 +18,7 @@ class Customer(models.Model):
 class Transaction(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, default=None)
     total = models.IntegerField()
+    description = models.TextField()
     transaction_datetime = models.DateTimeField("Transaction date", default=timezone.now)
 
     def __str__(self):
