@@ -3,7 +3,7 @@
 {%block content%}
 
     {%if transaction%}
-    <div class="card text-white bg-primary mb-3 text-center">
+    <div class="card bg-dark text-light mb-3 text-center">
         <div class="card-header">
         Transaction ID #{{transaction.id}}
         </div>
@@ -15,7 +15,7 @@
         <a href="{%url 'crm_app:transactions'%}" class="btn btn-light">Back</a>
         <a href="#" class ="btn btn-danger">Delete</a>
         </div>
-        <div class="card-footer text-body-secondary">
+        <div class="card-footer">
             {{transaction.transaction_datetime}}
         </div>
     </div>
