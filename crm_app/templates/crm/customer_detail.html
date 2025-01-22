@@ -3,9 +3,9 @@
 {% block content %}
 
     {%if customer%}
-        <div class="card text-center">
+        <div class="card border-primary text-center">
             <div class="card-header">
-            <ul class="nav nav-tabs card-header-tabs">
+            <ul class="nav nav-tabs card-header-tabs nav-fill">
                 <li class="nav-item">
                 <a class="nav-link active" href="#">Customer Info</a>
                 </li>
@@ -14,12 +14,12 @@
                 </li>
             </ul>
             </div>
-            <div class="card-body">
+            <div class="card-body table-primary">
             <h5 class="card-title">{{customer.first_name}} {{customer.last_name}}</h5>
             <p class="card-text"><strong>Email: </strong>{{customer.email}}</p>
             <p class="card-text"><strong>Phone Number: </strong>{{customer.phone_number}}</p>
             <p class="card-text"><strong>User ID: </strong>{{customer.id}}</p>
-            <a href="{%url 'crm_app:home'%}" class="btn btn-secondary">Back</a>
+            <a href="{%url 'crm_app:home'%}" class="btn btn-primary">Back</a>
             <a href="{%url 'crm_app:delete customer' customer.id%}" class ="btn btn-danger">Delete</a>
             </div>
         </div>

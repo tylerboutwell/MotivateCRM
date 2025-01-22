@@ -2,11 +2,11 @@
 
 {%block content%}
 
-<h1 class="display-1 text-center">Customers</h1>
+<h1 class="display-1 text-center text-primary">Customers</h1>
 
 {%if customers%}
-<table class="table table-hover table-light">
-    <thead>
+<table class="table table-hover table-primary">
+    <thead class="table-dark">
         <tr>
         <th scope="col">Name</th>
         <th scope="col">Phone Number</th>
@@ -20,7 +20,7 @@
     <td>{{customer.first_name}}  {{customer.last_name}}</td>
     <td>{{customer.phone_number}}</td>
     <td>{{customer.email}}</td>
-    <td><a class="text-dark" href="{%url 'crm_app:customer detail' customer.id%}">{{customer.id}}</a></td>
+    <td><a href="{%url 'crm_app:customer detail' customer.id%}">{{customer.id}}</a></td>
     </tbody>
     {%endfor%}
     </table>
