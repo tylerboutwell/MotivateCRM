@@ -1,10 +1,11 @@
+{%extends 'crm/base.html'%}
 {%load crispy_forms_tags%}
 
 {% block content %}
 
 <div class="m-5">
 
-    <form method="POST" action="{%url 'crm_app:update customer' customer.pk%}">
+    <form method="POST">
         {% csrf_token %}
 
         <div class="form-row">

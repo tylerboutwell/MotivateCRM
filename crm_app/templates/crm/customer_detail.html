@@ -20,7 +20,7 @@
             <p class="card-text"><strong>Phone Number: </strong>{{customer.phone_number}}</p>
             <p class="card-text"><strong>User ID: </strong>{{customer.id}}</p>
             <a href="{%url 'crm_app:home'%}" class="btn btn-primary">Back</a>
-            <a class="btn btn-warning" hx-get="{%url 'crm_app:update customer' customer.id%}" hx-target="#card-body" >Edit</a>
+            <a class="btn btn-warning" href="{%url 'crm_app:update customer' customer.id%}" >Edit</a>
             <a href="{%url 'crm_app:delete customer' customer.id%}" class ="btn btn-danger">Delete</a>
             </div>
         </div>
