@@ -3,7 +3,7 @@
 {% block content %}
 
     {%if customer%}
-        <div class="card border-primary text-center text-primary" style="background-color: #d1d1d1;">
+        <div id="customer-card" hx-target="this" hx-swap="outerHTML" class="card border-primary text-center text-primary" style="background-color: #d1d1d1;">
             <div class="card-header">
             <ul class="nav nav-pills nav-fill mb-3 pills-tab">
                 <li class="nav-item">
@@ -14,12 +14,13 @@
                 </li>
             </ul>
             </div>
-            <div class="card-body table-primary">
+            <div id="card-body" class="card-body table-primary">
             <h5 class="card-title">{{customer.first_name}} {{customer.last_name}}</h5>
             <p class="card-text"><strong>Email: </strong>{{customer.email}}</p>
             <p class="card-text"><strong>Phone Number: </strong>{{customer.phone_number}}</p>
             <p class="card-text"><strong>User ID: </strong>{{customer.id}}</p>
             <a href="{%url 'crm_app:home'%}" class="btn btn-primary">Back</a>
+            <a class="btn btn-warning" hx-get="{%url 'crm_app:customer edit' customer.id%}" hx-target="#card-body" >Edit</a>
             <a href="{%url 'crm_app:delete customer' customer.id%}" class ="btn btn-danger">Delete</a>
             </div>
         </div>
