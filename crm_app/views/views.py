@@ -3,9 +3,9 @@ from django.shortcuts import render, redirect
 from django.views import generic
 from ..models import Transaction, Customer
 from django.utils import timezone
-from django.contrib.auth.models import User
 from django.contrib import messages
 from ..forms import AddCustomerForm, AddTransactionForm
+from django.http import QueryDict
 
 
 
@@ -17,15 +17,25 @@ def CustomerView(request, pk):
     if request.user.is_authenticated:
         transactions = Transaction.objects.filter(customer__id=pk)
         customer = Customer.objects.get(id=pk)
-        return render(request, 'crm/customer_detail.html', {'transactions': transactions, 'customer': customer})
+        context = {'transactions': transactions, 'customer': customer}
+        return render(request, 'crm/customer_detail.html', context)
     else:
         messages.success(request, "You must be logged in to view this page.")
         return redirect('crm_app:home')
-    
-def CustomerEditView(request, pk):
-    customer = Customer.objects.get(id=pk)
-    form = AddCustomerForm(instance=customer)
-    return render(request, 'crm/partials/customer_edit.html', {'customer':customer, 'form':form})
+
+def UpdateCustomerView(request, pk):
+    if request.user.is_authenticated:
+        customer = Customer.objects.get(id=pk)
+        form = AddCustomerForm(request.POST or None, instance=customer)
+        if request.method == "POST":
+            if form.is_valid():
+                add_customer = form.save()
+                messages.success(request, "Customer successfully added.")
+                return redirect('crm_app:customers')
+        return render(request, 'crm/partials/update_customer.html', {'form': form, 'customer': customer})
+    else:
+        messages.success(request, "You must be logged in to add a customer.")
+        return redirect('crm_app:home')
     
 def CustomerTransactionsView(request, pk):
     if request.user.is_authenticated:
