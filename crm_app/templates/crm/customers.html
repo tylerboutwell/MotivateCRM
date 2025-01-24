@@ -11,16 +11,14 @@
         <th scope="col">Name</th>
         <th scope="col">Phone Number</th>
         <th scope="col">Email</th>
-        <th scope="col">ID</th>
         </tr>
     </thead>
     
     {% for customer in customers%}
     <tbody>
-    <td>{{customer.first_name}}  {{customer.last_name}}</td>
+    <td><a href="{%url 'crm_app:customer detail' customer.id%}">{{customer.first_name}}  {{customer.last_name}}</a></td>
     <td>{{customer.phone_number}}</td>
     <td>{{customer.email}}</td>
-    <td><a href="{%url 'crm_app:customer detail' customer.id%}">{{customer.id}}</a></td>
     </tbody>
     {%endfor%}
     </table>

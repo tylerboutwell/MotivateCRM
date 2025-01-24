@@ -18,7 +18,10 @@
             <h5 class="card-title">{{customer.first_name}} {{customer.last_name}}</h5>
             <p class="card-text"><strong>Email: </strong>{{customer.email}}</p>
             <p class="card-text"><strong>Phone Number: </strong>{{customer.phone_number}}</p>
-            <p class="card-text"><strong>User ID: </strong>{{customer.id}}</p>
+            <p class="card-text"><strong>Address: </strong>{{customer.address}}</p>
+            <p class="card-text"><strong>City: </strong>{{customer.city}}</p>
+            <p class="card-text"><strong>State: </strong>{{customer.state}}</p>
+            <p class="card-text"><strong>Postal Code: </strong>{{customer.postal_code}}</p>
             <a href="{%url 'crm_app:home'%}" class="btn btn-primary">Back</a>
             <a class="btn btn-warning" href="{%url 'crm_app:update customer' customer.id%}" >Edit</a>
             <a href="{%url 'crm_app:delete customer' customer.id%}" class ="btn btn-danger">Delete</a>
