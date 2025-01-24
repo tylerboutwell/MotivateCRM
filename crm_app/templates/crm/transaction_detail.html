@@ -13,6 +13,7 @@
         <p class="card-text"><strong>Total: </strong>${{transaction.total}}</p>
         <p class="card-text"><strong>Description: </strong>{{transaction.description}}</p>
         <a href="{%url 'crm_app:transactions'%}" class="btn btn-primary">Back</a>
+        <a href="{%url 'crm_app:update transaction' transaction.id%}" class="btn btn-warning">Edit</a>
         <a href="{%url 'crm_app:delete transaction' transaction.id%}" class ="btn btn-danger">Delete</a>
         </div>
         <div class="card-footer">

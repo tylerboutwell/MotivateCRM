@@ -56,6 +56,20 @@ def TransactionView(request, pk):
     else:
         messages.success(request, "You must be logged in to view this page.")
         return redirect('crm_app:home')
+    
+def UpdateTransactionView(request, pk):
+    if request.user.is_authenticated:
+        transaction = Transaction.objects.get(id=pk)
+        form = AddTransactionForm(request.POST or None, instance=transaction)
+        print(form.is_valid())
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Transaction successfully updated.")
+            return redirect('crm_app:transactions')
+        return render(request, 'crm/partials/update_transaction.html', {'form': form, 'transaction': transaction})
+    else: 
+        messages.success(request, "You must be logged in to add a customer.")
+        return redirect('crm_app:home')
         
 def Customers(request):
     customers = Customer.objects.all()

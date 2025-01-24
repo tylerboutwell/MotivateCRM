@@ -9,16 +9,16 @@
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Total</th>
+                    <th scope="col">Description</th>
                     <th scope="col">Transaction date, time</th>
-                    <th scope="col">Transaction ID</th>
                 </tr>
                 </thead>
                 {% for transaction in transactions %}
                     <tbody>
                     <td>{{transaction.customer.first_name}}  {{transaction.customer.last_name}}</td>
                     <td>${{transaction.total}}</td>
+                    <td><a href="{%url 'crm_app:transaction detail' transaction.id%}">{{transaction.description}}</a></td>
                     <td>{{transaction.transaction_datetime}}</td>
-                    <td><a href="{%url 'crm_app:transaction detail' transaction.id%}">{{transaction.id}}</a></td>
                     </tbody>
                 {%endfor%}
             </table>

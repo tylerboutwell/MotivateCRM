@@ -1,0 +1,20 @@
+{%extends 'crm\base.html'%}
+{%load crispy_forms_tags%}
+
+{% block content %}
+
+<h1 class="display-4 text-center">Edit Transaction</h1>
+<br/>
+
+<form method="POST" class="text-light">
+{% csrf_token %}
+
+{%crispy form%}
+<br/>
+
+<button type="submit" class="btn btn-primary d-block m-auto">Submit</button>
+
+</form>
+
+
+{%endblock%}

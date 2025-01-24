@@ -16,5 +16,6 @@ urlpatterns = [
     path("customer/<int:pk>/transactions", views.CustomerTransactionsView, name="customer transactions"),
     path("transaction/<int:pk>/", views.TransactionView, name="transaction detail"),
     path("logout/", user_views.logout_user, name="logout"),
-    path("customer/<int:pk>/update/", views.UpdateCustomerView, name="update customer")
+    path("customer/<int:pk>/update/", views.UpdateCustomerView, name="update customer"),
+    path("transaction/<int:pk>/update/", views.UpdateTransactionView, name="update transaction"),    
 ]
