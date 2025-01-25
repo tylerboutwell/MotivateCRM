@@ -6,10 +6,10 @@
 <h1 class="display-4 text-center">Edit Transaction</h1>
 <br/>
 
-<form method="POST" class="text-light">
+<form method="POST" action="{%url 'crm_app:update transaction' transaction.id%}">
 {% csrf_token %}
 
-{%crispy form%}
+{{form | crispy}}
 <br/>
 
 <button type="submit" class="btn btn-primary d-block m-auto">Submit</button>
