@@ -15,7 +15,6 @@ class DetailView(generic.DetailView):
 
 def CustomerView(request, pk):
     if request.user.is_authenticated:
-        print("CUSTOMER VIEW-----" + request.method)
         transactions = Transaction.objects.filter(customer__id=pk)
         customer = Customer.objects.get(id=pk)
         context = {'transactions': transactions, 'customer': customer}
@@ -28,10 +27,7 @@ def UpdateCustomerView(request, pk):
     if request.user.is_authenticated:
         customer = Customer.objects.get(id=pk)
         form = AddCustomerForm(request.POST or None, instance=customer)
-        print("request method...")
-        print(request.method)
         if form.is_valid():
-            print("updated")
             form.save()
             messages.success(request, "Customer successfully updated.")
             return redirect('crm_app:customers')
@@ -61,7 +57,6 @@ def UpdateTransactionView(request, pk):
     if request.user.is_authenticated:
         transaction = Transaction.objects.get(id=pk)
         form = AddTransactionForm(request.POST or None, instance=transaction)
-        print(form.is_valid())
         if form.is_valid():
             form.save()
             messages.success(request, "Transaction successfully updated.")
