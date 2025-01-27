@@ -60,7 +60,7 @@ def UpdateTransactionView(request, pk):
         if form.is_valid():
             form.save()
             messages.success(request, "Transaction successfully updated.")
-            return redirect('crm_app:transactions')
+            return render(request, 'crm/transaction_detail.html', {'transaction': transaction})
         return render(request, 'crm/partials/update_transaction.html', {'form': form, 'transaction': transaction})
     else: 
         messages.success(request, "You must be logged in to add a customer.")

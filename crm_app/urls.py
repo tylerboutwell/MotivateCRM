@@ -19,3 +19,9 @@ urlpatterns = [
     path("customer/<int:pk>/update/", views.UpdateCustomerView, name="update customer"),
     path("transaction/<int:pk>/update/", views.UpdateTransactionView, name="update transaction"),    
 ]
+
+htmx_urlpatterns = [
+
+]
+
+urlpatterns += htmx_urlpatterns

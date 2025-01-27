@@ -3,22 +3,26 @@
 {%block content%}
 
     {%if transaction%}
-    <div class="card border-primary mb-3 text-center text-primary" style="background-color: #d1d1d1;">
-        <div class="card-header">
-        Transaction ID #{{transaction.id}}
+    <div id="main">
+        <div class="card border-primary mb-3 text-center text-primary" style="background-color: #d1d1d1;">
+            <div class="card-header">
+            Transaction ID #{{transaction.id}}
+            </div>
+            <div class="card-body">
+            <h5 class="card-title">{{customer.first_name}}  {{customer.last_name}}</h5>
+            <p class="card-text"><strong>Name: </strong>{{transaction.customer.first_name}} {{transaction.customer.last_name}}</p>
+            <p class="card-text"><strong>Total: </strong>${{transaction.total}}</p>
+            <p class="card-text"><strong>Description: </strong>{{transaction.description}}</p>
+            <a href="{%url 'crm_app:transactions'%}" class="btn btn-primary">Back</a>
+            <!--<a href="{%url 'crm_app:update transaction' transaction.id%}" class="btn btn-warning">Edit</a>-->
+            <a hx-get="{%url 'crm_app:update transaction' transaction.id%}" hx-target="#below-card" class="btn btn-warning">Edit</a>
+            <a href="{%url 'crm_app:delete transaction' transaction.id%}" class ="btn btn-danger">Delete</a>
+            </div>
+            <div class="card-footer">
+                {{transaction.transaction_datetime}}
+            </div>
         </div>
-        <div class="card-body">
-        <h5 class="card-title">{{customer.first_name}}  {{customer.last_name}}</h5>
-        <p class="card-text"><strong>Name: </strong>{{transaction.customer.first_name}} {{transaction.customer.last_name}}</p>
-        <p class="card-text"><strong>Total: </strong>${{transaction.total}}</p>
-        <p class="card-text"><strong>Description: </strong>{{transaction.description}}</p>
-        <a href="{%url 'crm_app:transactions'%}" class="btn btn-primary">Back</a>
-        <a href="{%url 'crm_app:update transaction' transaction.id%}" class="btn btn-warning">Edit</a>
-        <a href="{%url 'crm_app:delete transaction' transaction.id%}" class ="btn btn-danger">Delete</a>
-        </div>
-        <div class="card-footer">
-            {{transaction.transaction_datetime}}
-        </div>
+        <div id="below-card"></div>
     </div>
     {% else %}
         <h1 class="text-light">No transaction.</h1>

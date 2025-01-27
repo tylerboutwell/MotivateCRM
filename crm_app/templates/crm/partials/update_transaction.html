@@ -1,12 +1,13 @@
-{%extends 'crm\base.html'%}
 {%load crispy_forms_tags%}
 
 {% block content %}
 
-<h1 class="display-4 text-center">Edit Transaction</h1>
+<div class="border p-5">
+
+<h1 class="display-7 text-center">Edit Transaction</h1>
 <br/>
 
-<form method="POST" action="{%url 'crm_app:update transaction' transaction.id%}">
+<form method="POST" hx-post ="{%url 'crm_app:update transaction' transaction.id%}" hx-target="body">
 {% csrf_token %}
 
 {{form | crispy}}
@@ -16,5 +17,6 @@
 
 </form>
 
+</div>
 
 {%endblock%}
