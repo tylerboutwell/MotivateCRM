@@ -2,21 +2,25 @@
 
 {% block content %}
 
-<div class="border p-5">
-
-<h1 class="display-7 text-center">Edit Transaction</h1>
-<br/>
-
-<form method="POST" hx-post ="{%url 'crm_app:update transaction' transaction.id%}" hx-target="body">
-{% csrf_token %}
-
-{{form | crispy}}
-<br/>
-
-<button type="submit" class="btn btn-primary d-block m-auto">Submit</button>
-
-</form>
-
-</div>
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Transaction</h5>
+        </div>
+        <div class="modal-body">
+            <form method="POST" hx-post ="{%url 'crm_app:update transaction' transaction.id%}" hx-target="body">
+                {% csrf_token %}
+                
+                {{form | crispy}}
+                <br/>
+                
+                <button type="submit" class="btn btn-primary d-block m-auto">Submit</button>
+                
+                </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
 
 {%endblock%}
