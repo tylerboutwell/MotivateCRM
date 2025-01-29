@@ -6,20 +6,23 @@
     <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Edit Transaction</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"></span>
+          </button>
         </div>
         <div class="modal-body">
-            <form method="POST" hx-post ="{%url 'crm_app:update transaction' transaction.id%}" hx-target="body">
+            <form id="myform" method="POST" hx-post ="{%url 'crm_app:update transaction' transaction.id%}" hx-target="body">
                 {% csrf_token %}
                 
                 {{form | crispy}}
                 <br/>
                 
-                <button type="submit" class="btn btn-primary d-block m-auto">Submit</button>
                 
                 </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button form="myform" type="submit" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
 
