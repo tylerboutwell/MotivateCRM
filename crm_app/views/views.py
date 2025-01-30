@@ -91,12 +91,21 @@ def DeleteCustomer(request, pk):
         messages.success(request, "You must be logged in to delete data.")
         return redirect('crm_app:customers')
     
+def DeleteTransactionModal(request, pk):
+    if request.user.is_authenticated:
+        transaction = Transaction.objects.get(id=pk)
+        return render(request, 'crm/partials/delete_transaction.html', {'transaction': transaction})
+    else:
+        messages.success(request, "You must be logged in to delete data.")
+        return redirect('crm_app:home')
+    
 def DeleteTransaction(request, pk):
     if request.user.is_authenticated:
         transaction = Transaction.objects.get(id=pk)
-        transaction.delete()
         messages.success(request, "Transaction has been deleted")
-        return redirect('crm_app:transactions')
+        transaction.delete()
+        transactions = Transaction.objects.all()
+        return render(request, 'crm/transactions.html', {'transactions': transactions})
     else:
         messages.success(request, "You must be logged in to delete data.")
         return redirect('crm_app:home')

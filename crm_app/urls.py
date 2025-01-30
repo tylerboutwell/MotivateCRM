@@ -12,6 +12,7 @@ urlpatterns = [
     path("customer/<int:pk>/", views.CustomerView, name="customer detail"),
     path("add_customer", views.AddCustomer, name= "add customer"),
     path("delete_customer/<int:pk>/", views.DeleteCustomer, name = "delete customer"),
+    path("delete_transaction_modal/<int:pk>/", views.DeleteTransactionModal, name="delete transaction modal"),
     path("delete_transaction/<int:pk>/", views.DeleteTransaction, name="delete transaction"),
     path("customer/<int:pk>/transactions", views.CustomerTransactionsView, name="customer transactions"),
     path("transaction/<int:pk>/", views.TransactionView, name="transaction detail"),

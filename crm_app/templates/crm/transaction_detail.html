@@ -14,14 +14,17 @@
             <p class="card-text"><strong>Total: </strong>${{transaction.total}}</p>
             <p class="card-text"><strong>Description: </strong>{{transaction.description}}</p>
             <a href="{%url 'crm_app:transactions'%}" class="btn btn-primary">Back</a>
-            <!--<a href="{%url 'crm_app:update transaction' transaction.id%}" class="btn btn-warning">Edit</a>-->
             <a hx-get="{%url 'crm_app:update transaction' transaction.id%}"
             hx-target="#below-card" 
             class="btn btn-warning"
             data-bs-toggle="modal"
             data-bs-target="#below-card"
             >Edit</a>
-            <a href="{%url 'crm_app:delete transaction' transaction.id%}" class ="btn btn-danger">Delete</a>
+            <a hx-get="{%url 'crm_app:delete transaction modal' transaction.id%}"
+            hx-target="#below-card" 
+            data-bs-toggle="modal"
+            data-bs-target="#below-card" 
+            class ="btn btn-danger">Delete</a>
             </div>
             <div class="card-footer">
                 {{transaction.transaction_datetime}}
