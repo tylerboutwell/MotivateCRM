@@ -30,7 +30,7 @@ def UpdateCustomerView(request, pk):
         if form.is_valid():
             form.save()
             messages.success(request, "Customer successfully updated.")
-            return redirect('crm_app:customers')
+            return render(request, 'crm/customer_detail.html', {'customer': customer})
         return render(request, 'crm/partials/update_customer.html', {'form': form, 'customer': customer})
     else:
         messages.success(request, "You must be logged in to add a customer.")

@@ -1,20 +1,34 @@
-{%extends 'crm\base.html'%}
 {%load crispy_forms_tags%}
 
 {% block content %}
 
-<div class="m-5">
-
-    <form method="POST">
-        {% csrf_token %}
-
-        <div class="form-row">
-        {%crispy form%}
-        </br>
+<div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Customer</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"></span>
+          </button>
         </div>
+        <div class="modal-body">
+            <div class="">
 
+                <form id="cform" method="POST" hx-post ="{%url 'crm_app:update customer' customer.id%}" hx-target="body">
+                    {% csrf_token %}
 
-    </form>
+                    {{form | crispy}}
+
+            
+            
+                </form>
+            </div>
+            
+        </div>
+        <div class="modal-footer">
+            <button form="cform" type="submit" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
 </div>
 
 {%endblock%}
