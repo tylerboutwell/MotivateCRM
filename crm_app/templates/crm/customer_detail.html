@@ -29,7 +29,11 @@
             data-bs-toggle="modal"
             data-bs-target="#below-card"
             >Edit</a>
-            <a href="{%url 'crm_app:delete customer' customer.id%}" class ="btn btn-danger">Delete</a>
+            <a hx-get="{%url 'crm_app:delete customer' customer.id%}"
+            hx-target="#below-card" 
+            data-bs-toggle="modal"
+            data-bs-target="#below-card" 
+            class ="btn btn-danger">Delete</a>
             </div>
         </div>
     <div id="below-card"

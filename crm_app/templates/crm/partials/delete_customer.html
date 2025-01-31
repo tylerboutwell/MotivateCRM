@@ -1,0 +1,22 @@
+{%load crispy_forms_tags%}
+
+{% block content %}
+
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Delete customer</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+            Are you sure you want to delete this customer?
+        </div>
+        <div class="modal-footer">
+            <a hx-delete="{%url 'crm_app:delete customer' customer.id%}" hx-target="body" class="btn btn-danger">Delete</a>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+{%endblock%}

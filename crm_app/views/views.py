@@ -84,9 +84,12 @@ class transactions(generic.ListView):
 def DeleteCustomer(request, pk):
     if request.user.is_authenticated:
         customer = Customer.objects.get(id=pk)
-        customer.delete()
-        messages.success(request, "Customer has been deleted")
-        return redirect('crm_app:home')
+        if request.method == "DELETE":
+            customer.delete()
+            messages.success(request, "Customer has been deleted")
+            customers = Customer.objects.all()
+            return render(request, 'crm/customers.html', {'customers': customers})
+        return render(request, 'crm/partials/delete_customer.html', {'customer': customer})
     else:
         messages.success(request, "You must be logged in to delete data.")
         return redirect('crm_app:customers')
