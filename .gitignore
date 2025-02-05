@@ -1,2 +1,12 @@
 venv
 crm_project/.env
+crm_project/env/
+crm_project/.idea/
+crm_project/__pycache__/
+crm_project/*.py[cod]
+crm_project/*$py.class
+crm_project/.vscode/
+crm_project/.DS_Store  
+crm_project/.AppleDouble  
+crm_project/.LSOverride
+crm_project/.env
