@@ -93,7 +93,7 @@ WSGI_APPLICATION = 'crm_project.wsgi.application'
 
 
 DATABASES = {
-    "default": env.db(default=DATABASE_URL),
+    "default": env.db(default="postgresql://baifxzgtuwvlcpzy:oqsjiwkbhauqdpsy@2571-db-1:5432/qhtlzwexuojmgrkv"),
 }
 
 LOGGING = {
