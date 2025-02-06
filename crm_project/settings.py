@@ -93,7 +93,7 @@ WSGI_APPLICATION = 'crm_project.wsgi.application'
 
 
 DATABASES = {
-    "default": env.db(default="sqlite:///db.sqlite3"),
+    "default": env.db(default=DATABASE_URL),
 }
 
 LOGGING = {
