@@ -27,17 +27,16 @@ def logout_user(request):
 
 def Register(request):
     if request.method == 'POST':
-	    form = SignUpForm(request.POST)
-	    if form.is_valid():
-		    form.save()
-			username = form.cleaned_data['username']
-			password = form.cleaned_data['password1']
-			user = authenticate(username=username, password=password)
-			login(request, user)
-			messages.success(request, "You Have Successfully Registered! Welcome!")
-			return redirect('home')
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            messages.success(request, "You Have Successfully Registered! Welcome!")
+            return redirect('home')
     else:
-		form = SignUpForm()
-		return render(request, 'crm/register.html', {'form':form})
-
-	return render(request, 'crm/register.html', {'form':form})
+        form = SignUpForm()
+        return render(request, 'crm/register.html', {'form':form})
+    return render(request, 'crm/register.html', {'form':form})
