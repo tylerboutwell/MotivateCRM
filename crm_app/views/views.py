@@ -74,12 +74,13 @@ def Customers(request):
         messages.success(request, "You must be logged in to view this page.")
         return redirect('crm_app:home')
     
-class transactions(generic.ListView):
-    template_name = "crm/transactions.html"
-    context_object_name = "transactions"
-
-    def get_queryset(self):
-        return Transaction.objects.filter(transaction_datetime__lte=timezone.now()).order_by("-transaction_datetime")
+def transactions(request):
+    transactions = Transaction.objects.all()
+    if request.user.is_authenticated:
+        return render(request, 'crm/transactions.html', {'transactions':transactions})
+    else:
+        messages.success(request, "You must be logged in to view this page.")
+        return redirect('crm_app:home')
     
 def DeleteCustomer(request, pk):
     if request.user.is_authenticated:
