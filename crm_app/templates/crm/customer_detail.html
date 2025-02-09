@@ -22,7 +22,7 @@
             <p class="card-text"><strong>City: </strong>{{customer.city}}</p>
             <p class="card-text"><strong>State: </strong>{{customer.state}}</p>
             <p class="card-text"><strong>Postal Code: </strong>{{customer.postal_code}}</p>
-            <a href="{%url 'crm_app:home'%}" class="btn btn-primary">Back</a>
+            <a href="{%url 'crm_app:customers'%}" class="btn btn-primary">Back</a>
             <a hx-get="{%url 'crm_app:update customer' customer.id%}"
             hx-target="#below-card" 
             class="btn btn-warning"
