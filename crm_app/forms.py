@@ -82,7 +82,7 @@ class AddTransactionForm(forms.ModelForm):
     customer = forms.ModelChoiceField(queryset=Customer.objects.all(), required=True,empty_label="-- Select Customer --", label="")
     total = forms.IntegerField(required=True, widget=forms.widgets.NumberInput(attrs={"placeholder": "Total", "class": "form-control"}), label="")
     description = forms.CharField(widget=forms.Textarea(attrs={"placeholder": "Enter description here", "class": "form-control"}),label="")
-    transaction_datetime = forms.DateTimeField(required=True, widget=forms.widgets.DateTimeInput(attrs={"type": "datetime-local", "class": "form-control"}), initial=timezone.now(),label="")
+    transaction_datetime = forms.DateTimeField(required=True, widget=forms.widgets.DateTimeInput(format='%Y-%m-%d %H:%M',attrs={"type": "datetime-local", "class": "form-control"}), initial=timezone.now(),label="")
 
     class Meta:
         model = Transaction
