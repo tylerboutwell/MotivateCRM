@@ -32,6 +32,7 @@ SECRET_KEY = env("SECRET_KEY", default="change_me")
 DEBUG = env("DEBUG", default=False)
 
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["*"])
+print(f"ALLOWED_HOSTS: {ALLOWED_HOSTS}")
 
 # Application definition
 
