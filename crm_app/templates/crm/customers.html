@@ -2,9 +2,8 @@
 
 {%block content%}
 
-<h1 class="display-2 text-center text-primary">Customers</h1>
-
 {%if customers%}
+<h1 class="display-2 text-center text-primary">Customers</h1>
 <table class="table table-hover table-primary">
     <thead class="table-dark">
         <tr>
@@ -23,7 +22,7 @@
     {%endfor%}
     </table>
 {% else %}
-    <h1 class="text-primary">No customers</h1>
+    <h1 class="display-2 text-center text-primary">No customers</h1>
 {%endif%}
 <a class="btn btn-primary m-auto" href="{%url 'crm_app:add customer'%}" role="button">Add Customer</a>
 
