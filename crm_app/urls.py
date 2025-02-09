@@ -13,6 +13,7 @@ urlpatterns = [
     path("customer/<int:pk>/transactions", views.CustomerTransactionsView, name="customer transactions"),
     path("transaction/<int:pk>/", views.TransactionView, name="transaction detail"),
     path("logout/", user_views.logout_user, name="logout"),
+    path("register/", user_views.Register, name= "register"),
 ]
 
 htmx_urlpatterns = [
