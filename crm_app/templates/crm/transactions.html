@@ -4,27 +4,27 @@
 <h1 class="text-primary display-2 text-center">Transactions</h1>
 
 {%if transactions%}
-            <table class="table table-hover table-primary">
-                <thead class="table-dark">
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Total</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Transaction date, time</th>
-                </tr>
-                </thead>
-                {% for transaction in transactions %}
-                    <tbody>
-                    <td>{{transaction.customer.first_name}}  {{transaction.customer.last_name}}</td>
-                    <td>${{transaction.total}}</td>
-                    <td><a href="{%url 'crm_app:transaction detail' transaction.id%}">{{transaction.description}}</a></td>
-                    <td>{{transaction.transaction_datetime}}</td>
-                    </tbody>
-                {%endfor%}
-            </table>
-            <a class="btn btn-primary m-auto" href="{%url 'crm_app:add transaction'%}" role="button">Add Transaction</a>
-        {% else %}
-            <h1 class="text-light">No transactions for this user.</h1>
-        {% endif %}
+    <table class="table table-hover table-primary">
+        <thead class="table-dark">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Total</th>
+            <th scope="col">Description</th>
+            <th scope="col">Transaction date, time</th>
+        </tr>
+        </thead>
+        {% for transaction in transactions %}
+            <tbody>
+            <td>{{transaction.customer.first_name}}  {{transaction.customer.last_name}}</td>
+            <td>${{transaction.total}}</td>
+            <td><a href="{%url 'crm_app:transaction detail' transaction.id%}">{{transaction.description}}</a></td>
+            <td>{{transaction.transaction_datetime}}</td>
+            </tbody>
+        {%endfor%}
+    </table>
+{% else %}
+    <h1 class="text-light">No transactions for this user.</h1>
+{% endif %}
+<a class="btn btn-primary m-auto" href="{%url 'crm_app:add transaction'%}" role="button">Add Transaction</a>
 
 {%endblock%}

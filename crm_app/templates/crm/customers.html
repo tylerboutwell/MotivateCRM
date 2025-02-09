@@ -22,6 +22,8 @@
     </tbody>
     {%endfor%}
     </table>
+{% else %}
+    <h1 class="text-light">No customers.</h1>
 {%endif%}
 <a class="btn btn-primary m-auto" href="{%url 'crm_app:add customer'%}" role="button">Add Customer</a>
 
