@@ -5,7 +5,7 @@ from .views import views, user_views
 app_name = "crm_app"
 urlpatterns = [
     path("", user_views.home, name="home"),
-    path("transactions/", views.transactions.as_view(), name="transactions"),
+    path("transactions/", views.transactions, name="transactions"),
     path("add_transaction", views.AddTransaction, name= "add transaction"),
     path("customers/", views.Customers, name="customers"),
     path("customer/<int:pk>/", views.CustomerView, name="customer detail"),
