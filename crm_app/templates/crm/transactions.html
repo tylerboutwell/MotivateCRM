@@ -23,7 +23,7 @@
         {%endfor%}
     </table>
 {% else %}
-    <h1 class="text-light">No transactions for this user.</h1>
+    <h1 class="text-primary">No transactions for this user.</h1>
 {% endif %}
 <a class="btn btn-primary m-auto" href="{%url 'crm_app:add transaction'%}" role="button">Add Transaction</a>
 
