@@ -35,7 +35,7 @@ def Register(request):
             user = authenticate(username=username, password=password)
             login(request, user)
             messages.success(request, "You Have Successfully Registered! Welcome!")
-            return redirect('home')
+            return redirect('crm_app:home')
     else:
         form = SignUpForm()
         return render(request, 'crm/register.html', {'form':form})
