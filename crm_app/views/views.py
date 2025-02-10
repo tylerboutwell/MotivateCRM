@@ -5,7 +5,7 @@ from ..models import Transaction, Customer
 from django.utils import timezone
 from django.contrib import messages
 from ..forms import AddCustomerForm, AddTransactionForm
-from django.http import QueryDict
+from django.contrib.auth.decorators import permission_required
 
 
 
@@ -108,6 +108,7 @@ def DeleteTransaction(request, pk):
         messages.success(request, "You must be logged in to delete data.")
         return redirect('crm_app:home')
     
+@permission_required('crm_app.add_customer')
 def AddCustomer(request):
     form = AddCustomerForm(request.POST or None)
     if request.user.is_authenticated:
