@@ -32,7 +32,6 @@ SECRET_KEY = env("SECRET_KEY", default="change_me")
 DEBUG = env("DEBUG", default=False)
 
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["*"])
-print(f"ALLOWED_HOSTS: {ALLOWED_HOSTS}")
 
 # Application definition
 
@@ -153,6 +152,6 @@ MEDIA_URL = env("MEDIA_PATH", default="/media/")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CSRF_TRUSTED_ORIGINS = ALLOWED_HOSTS
+CSRF_TRUSTED_ORIGINS = env.list("CSRF_TRUSTED_ORIGINS", default=["*"])
 
 INTERNAL_IPS = ALLOWED_HOSTS
