@@ -57,6 +57,10 @@ TENANT_APPS = (
 
 INSTALLED_APPS = list(SHARED_APPS) + [app for app in TENANT_APPS if app not in SHARED_APPS]
 
+TENANT_MODEL = "crm_app.Client" # app.Model
+
+TENANT_DOMAIN_MODEL = "crm_app.Domain"  # app.Model
+
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
