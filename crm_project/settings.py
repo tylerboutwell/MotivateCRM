@@ -35,7 +35,8 @@ ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["*"])
 
 # Application definition
 
-INSTALLED_APPS = [
+SHARED_APPS = [
+    'django_tenants'
     'crm_app.apps.CrmAppConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -49,6 +50,12 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'django_htmx',
 ]
+
+TENANT_APPS = (
+    #tenant-specific apps
+)
+
+INSTALLED_APPS = list(SHARED_APPS) + [app for app in TENANT_APPS if app not in SHARED_APPS]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
@@ -78,7 +85,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request',
+                'django.template.context_processors.request',  
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
