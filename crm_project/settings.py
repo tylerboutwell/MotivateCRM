@@ -51,11 +51,8 @@ SHARED_APPS = [
     'django_htmx',
 ]
 
-TENANT_APPS = (
-    #tenant-specific apps
-)
 
-INSTALLED_APPS = list(SHARED_APPS) + [app for app in TENANT_APPS if app not in SHARED_APPS]
+INSTALLED_APPS = SHARED_APPS
 
 TENANT_MODEL = "crm_app.Client" # app.Model
 
