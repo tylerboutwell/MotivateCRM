@@ -55,6 +55,7 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
+    'django_tenants.middleware.main.TenantMainMiddleware',
     'django.middleware.security.SecurityMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -95,7 +96,11 @@ WSGI_APPLICATION = 'crm_project.wsgi.application'
 DATABASES = {
     "default": env.db(),
 }
+DATABASES['default']['ENGINE'] = 'django_tenants.postgresql_backend'
 
+DATABASE_ROUTERS = (
+    'django_tenants.routers.TenantSyncRouter',
+)
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
