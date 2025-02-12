@@ -36,7 +36,7 @@ ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["*"])
 # Application definition
 
 SHARED_APPS = [
-    'django_tenants'
+    'django_tenants',
     'crm_app.apps.CrmAppConfig',
     'django.contrib.admin',
     'django.contrib.auth',
