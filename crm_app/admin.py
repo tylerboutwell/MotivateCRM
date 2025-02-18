@@ -1,10 +1,5 @@
 from django.contrib import admin
-from django_tenants.admin import TenantAdminMixin
-from .models import Customer, Transaction, Client
-
-@admin.register(Client)
-class ClientAdmin(TenantAdminMixin, admin.ModelAdmin):
-        list_display = ('name', 'paid_until')
+from .models import Customer, Transaction
 
 class CustomerAdmin(admin.ModelAdmin):
     list_display = ["first_name", "last_name", "phone_number", "email"]
