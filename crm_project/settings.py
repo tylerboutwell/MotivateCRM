@@ -34,9 +34,8 @@ ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["*"])
 
 # Application definition
 
-SHARED_APPS = [
+INSTALLED_APPS = [
     'crm_app',
-    'django_tenants',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -51,20 +50,13 @@ SHARED_APPS = [
     'django_extensions',
 ]
 
-TENANT_APPS = [
-    'client_app',
-]
 
-INSTALLED_APPS = list(SHARED_APPS) + [app for app in TENANT_APPS if app not in SHARED_APPS]
-
-SHOW_PUBLIC_IF_NO_TENANT_FOUND = True
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
-    'django_tenants.middleware.main.TenantMainMiddleware',
     'django.middleware.security.SecurityMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -108,7 +100,7 @@ WSGI_APPLICATION = 'crm_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        "ENGINE": 'django_tenants.postgresql_backend',
+        "ENGINE": 'django.db.backends.postgresql',
         "NAME": env("name"),
         "USER": env("user"),
         "PASSWORD": env("password"),
@@ -117,9 +109,6 @@ DATABASES = {
     }
 }
 
-DATABASE_ROUTERS = (
-    'django_tenants.routers.TenantSyncRouter',
-)
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
@@ -179,7 +168,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #CSRF_TRUSTED_ORIGINS = env.list("CSRF_TRUSTED_ORIGINS", default=["*"])
 
 INTERNAL_IPS = ALLOWED_HOSTS
-
-TENANT_MODEL = "crm_app.Client" # app.Model
-
-TENANT_DOMAIN_MODEL = "crm_app.Domain"  # app.Model

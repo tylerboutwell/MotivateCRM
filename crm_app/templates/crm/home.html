@@ -1,6 +1,7 @@
 {%extends 'crm/base.html'%}
 
 {%block content%}
+<h1 class="text-primary">Tenant: {{request.tenant.name}}</h1>
 
 {% if user.is_authenticated %}
 <h1 class="display-2 text-center text-primary">Dashboard</h1>
@@ -17,7 +18,7 @@
 
 {% else %}
 
-    <h1 class = "text-dark text-center">Login</h1>
+    <h1 class = "text-primary text-center">Login</h1>
     <br/>
 
     <form method="post" action="{%url 'crm_app:home' %}" class="text-light">
