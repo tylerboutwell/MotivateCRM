@@ -1,19 +1,6 @@
 from django.db import models
 from django.utils import timezone
-from django_tenants.models import TenantMixin, DomainMixin
-
-class Client(TenantMixin):
-    name = models.CharField(max_length=100)
-    paid_until =  models.DateField()
-    on_trial = models.BooleanField()
-    created_on = models.DateField(auto_now_add=True)
-
-    # default true, schema will be automatically created and synced when it is saved
-    auto_create_schema = True
-    auto_drop_schema = True
-
-class Domain(DomainMixin):
-    pass
+from django.contrib.auth.models import User
 
 class Customer(models.Model):
     first_name = models.CharField(max_length=100)
@@ -24,6 +11,7 @@ class Customer(models.Model):
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=50)
     postal_code = models.CharField(max_length=50)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     
     def __str__(self):
         return self.first_name + " " + self.last_name
@@ -33,6 +21,7 @@ class Transaction(models.Model):
     total = models.IntegerField()
     description = models.TextField()
     transaction_datetime = models.DateTimeField("Transaction date", default=timezone.now)
-
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    
     def __str__(self):
         return "Transaction amount of $" + str(self.total) + " from customer: " + str(self.customer)
