@@ -2,7 +2,6 @@
 
 import django.db.models.deletion
 import django.utils.timezone
-import django_tenants.postgresql_backend.base
 from django.db import migrations, models
 
 
@@ -18,7 +17,7 @@ class Migration(migrations.Migration):
             name='Client',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('schema_name', models.CharField(db_index=True, max_length=63, unique=True, validators=[django_tenants.postgresql_backend.base._check_schema_name])),
+                ('schema_name', models.CharField(db_index=True, max_length=63, unique=True)),
                 ('name', models.CharField(max_length=100)),
                 ('paid_until', models.DateField()),
                 ('on_trial', models.BooleanField()),
