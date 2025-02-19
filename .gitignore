@@ -10,4 +10,4 @@ crm_project/.DS_Store
 crm_project/.AppleDouble  
 crm_project/.LSOverride
 crm_project/.env
-env
+.env

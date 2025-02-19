@@ -25,6 +25,8 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
+print("ENV----")
+print(env('SECRET_KEY'))
 
 SECRET_KEY = env("SECRET_KEY", default="change_me")
 
