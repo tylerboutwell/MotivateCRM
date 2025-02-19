@@ -141,6 +141,6 @@ MEDIA_URL = env("MEDIA_PATH", default="/media/")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#CSRF_TRUSTED_ORIGINS = env.list("CSRF_TRUSTED_ORIGINS", default=["*"])
+CSRF_TRUSTED_ORIGINS = env.list("CSRF_TRUSTED_ORIGINS", default=["*"])
 
 INTERNAL_IPS = ALLOWED_HOSTS
