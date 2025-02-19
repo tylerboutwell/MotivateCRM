@@ -67,7 +67,7 @@ def UpdateTransactionView(request, pk):
         return redirect('crm_app:home')
         
 def Customers(request):
-    customers = Customer.objects.all()
+    customers = Customer.objects.all().filter(user=request.user)
     if request.user.is_authenticated:
         return render(request, 'crm/customers.html', {'customers':customers})
     else:
@@ -75,7 +75,7 @@ def Customers(request):
         return redirect('crm_app:home')
     
 def transactions(request):
-    transactions = Transaction.objects.all()
+    transactions = Transaction.objects.all().filter(user=request.user)
     if request.user.is_authenticated:
         return render(request, 'crm/transactions.html', {'transactions':transactions})
     else:
