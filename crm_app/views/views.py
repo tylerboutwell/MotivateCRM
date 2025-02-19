@@ -113,7 +113,9 @@ def AddCustomer(request):
     if request.user.is_authenticated:
             if request.method == "POST":
                     if form.is_valid():
-                        add_customer = form.save()
+                        add_customer = form.save(commit=False)
+                        add_customer.user = request.user
+                        add_customer.save()
                         messages.success(request, "Customer successfully added.")
                         return redirect('crm_app:customers')
             return render(request, 'crm/add_customer.html', {'form': form})
