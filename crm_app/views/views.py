@@ -128,7 +128,9 @@ def AddTransaction(request):
     if request.user.is_authenticated:
         if request.method == "POST":
             if form.is_valid():
-                add_transaction = form.save()
+                add_transaction = form.save(commit=False)
+                add_transaction.user = request.user
+                add_transaction.save()
                 messages.success(request, "Transaction successfully added.")
                 return redirect('crm_app:transactions')
         return render(request, 'crm/add_transaction.html', {'form': form})
