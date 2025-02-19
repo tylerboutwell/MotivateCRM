@@ -17,8 +17,12 @@ def CustomerView(request, pk):
     if request.user.is_authenticated:
         transactions = Transaction.objects.filter(customer__id=pk)
         customer = Customer.objects.get(id=pk)
-        context = {'transactions': transactions, 'customer': customer}
-        return render(request, 'crm/customer_detail.html', context)
+        if customer.user == request.user:
+            context = {'transactions': transactions, 'customer': customer}
+            return render(request, 'crm/customer_detail.html', context)
+        else:
+            messages.success(request, "You do not have permission to view this customer.")
+            return redirect('crm_app:home')
     else:
         messages.success(request, "You must be logged in to view this page.")
         return redirect('crm_app:home')
@@ -48,7 +52,11 @@ def CustomerTransactionsView(request, pk):
 def TransactionView(request, pk):
     if request.user.is_authenticated:
         transaction = Transaction.objects.get(id=pk)
-        return render(request, 'crm/transaction_detail.html', {'transaction': transaction})
+        if transaction.user == request.user:
+            return render(request, 'crm/transaction_detail.html', {'transaction': transaction})
+        else:
+            messages.success(request, "You do not have permission to view this transaction.")
+            return redirect('crm_app:home')
     else:
         messages.success(request, "You must be logged in to view this page.")
         return redirect('crm_app:home')
