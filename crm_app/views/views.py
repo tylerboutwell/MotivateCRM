@@ -133,6 +133,7 @@ def AddCustomer(request):
     
 def AddTransaction(request):
     form = AddTransactionForm(request.POST or None)
+    form.fields['customer'].queryset = Customer.objects.all().filter(user=request.user)
     if request.user.is_authenticated:
         if request.method == "POST":
             if form.is_valid():
