@@ -96,7 +96,7 @@ def DeleteCustomer(request, pk):
         if request.method == "DELETE":
             customer.delete()
             messages.success(request, "Customer has been deleted")
-            customers = Customer.objects.all()
+            customers = Customer.objects.all().filter(user=request.user)
             return render(request, 'crm/customers.html', {'customers': customers})
         return render(request, 'crm/partials/delete_customer.html', {'customer': customer})
     else:
@@ -109,7 +109,7 @@ def DeleteTransaction(request, pk):
         if request.method == "DELETE":
             messages.success(request, "Transaction has been deleted")
             transaction.delete()
-            transactions = Transaction.objects.all() 
+            transactions = Transaction.objects.all().filter(user=request.user)
             return render(request, 'crm/transactions.html', {'transactions': transactions})    
         return render(request, 'crm/partials/delete_transaction.html', {'transaction': transaction})
     else:
