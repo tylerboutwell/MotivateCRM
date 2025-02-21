@@ -1,3 +1,3 @@
-## CRM
+# [Motivate CRM](motivatecrm.com)
 
-Customer relationship management program using django, postgresql, and bootstrap.
+Customer relationship management program using django, postgresql, HTMX, and bootstrap.
