@@ -5,7 +5,7 @@ from ..models import Customer
 from ..forms import SignUpForm
 
 def home(request):
-    customers = Customer.objects.all()
+    customers = Customer.objects.all().filter(user=request.user)
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
