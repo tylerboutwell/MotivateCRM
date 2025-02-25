@@ -4,6 +4,10 @@
 
 {%if customers%}
 <h1 class="display-2 text-center text-primary">Customers</h1>
+<input class="w-100 mb-2 form-control" placeholder="Search customers" 
+type="search" name="search" hx-post="{%url 'crm_app:search customer'%}" 
+hx-trigger="input changed delay:500ms, keyup[key=='Enter']"
+hx-target="#dyn_tb_body">
 <div class="table-responsive">
     <table class="table table-hover table-primary">
         <thead class="table-dark">
@@ -13,14 +17,15 @@
             <th scope="col">Email</th>
             </tr>
         </thead>
-        
-        {% for customer in customers%}
-        <tbody>
-        <td><a href="{%url 'crm_app:customer detail' customer.id%}">{{customer.first_name}}  {{customer.last_name}}</a></td>
-        <td>{{customer.phone_number}}</td>
-        <td>{{customer.email}}</td>
+        <tbody id="dyn_tb_body">
+            {% for customer in customers%}
+            <tr>
+            <td><a href="{%url 'crm_app:customer detail' customer.id%}">{{customer.first_name}}  {{customer.last_name}}</a></td>
+            <td>{{customer.phone_number}}</td>
+            <td>{{customer.email}}</td>
+            </tr>
+            {%endfor%}
         </tbody>
-        {%endfor%}
     </table>
 </div>
 {% else %}

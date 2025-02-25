@@ -1,0 +1,7 @@
+{% for customer in customers%}
+    <tr>
+    <td><a href="{%url 'crm_app:customer detail' customer.id%}">{{customer.first_name}}  {{customer.last_name}}</a></td>
+    <td>{{customer.phone_number}}</td>
+    <td>{{customer.email}}</td>
+    </tr>
+{%endfor%}

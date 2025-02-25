@@ -6,12 +6,7 @@ from django.utils import timezone
 from django.contrib import messages
 from ..forms import AddCustomerForm, AddTransactionForm
 from django.contrib.auth.decorators import permission_required
-
-
-
-class DetailView(generic.DetailView):
-    model = Transaction
-    template_name = "crm/detail.html"
+from django.db.models import Q
 
 def CustomerView(request, pk):
     if request.user.is_authenticated:
@@ -145,4 +140,18 @@ def AddTransaction(request):
         return render(request, 'crm/add_transaction.html', {'form': form})
     else:
         messages.success(request, "You must be logged in to add a transaction.")
+        return redirect('crm_app:home')
+    
+def SearchCustomer(request):
+    if request.user.is_authenticated:
+        customers = Customer.objects.all().filter(user=request.user)
+        searchstr = request.POST.get('search')
+        if searchstr:
+            results = customers = customers.filter(Q(first_name__contains=searchstr) | Q(last_name__contains=searchstr))
+        else:
+            results = Customer.objects.all().filter(user=request.user)
+        return render(request, 'crm/partials/search_customer.html', {'customers': results})
+        
+    else: 
+        messages.success(request, "You must be logged in to search customers.")
         return redirect('crm_app:home')
