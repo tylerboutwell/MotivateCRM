@@ -3,6 +3,10 @@
 
 {%if transactions%}
 <h1 class="text-primary display-2 text-center">Transactions</h1>
+<input class="w-100 mb-2 form-control" placeholder="Search transactions" 
+type="search" name="search" hx-post="{%url 'crm_app:search transaction'%}" 
+hx-trigger="input changed delay:500ms, keyup[key=='Enter']"
+hx-target="#dyn_tb_body">
     <div class="table-responsive">
         <table class="table table-hover table-primary">
             <thead class="table-dark">
@@ -13,14 +17,17 @@
                 <th scope="col">Transaction date, time</th>
             </tr>
             </thead>
-            {% for transaction in transactions %}
-                <tbody>
+
+            <tbody id="dyn_tb_body">
+                {% for transaction in transactions %}
+                <tr>
                 <td>{{transaction.customer.first_name}}  {{transaction.customer.last_name}}</td>
                 <td>${{transaction.total}}</td>
                 <td><a href="{%url 'crm_app:transaction detail' transaction.id%}">{{transaction.description}}</a></td>
                 <td>{{transaction.transaction_datetime}}</td>
-                </tbody>
-            {%endfor%}
+                </tr>
+                {%endfor%}
+            </tbody>
         </table>
     </div>
 {% else %}

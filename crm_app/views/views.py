@@ -147,11 +147,31 @@ def SearchCustomer(request):
         customers = Customer.objects.all().filter(user=request.user)
         searchstr = request.POST.get('search')
         if searchstr:
-            results = customers = customers.filter(Q(first_name__contains=searchstr) | Q(last_name__contains=searchstr))
+            results = customers.filter(Q(first_name__icontains=searchstr) |
+                                                   Q(last_name__icontains=searchstr) |
+                                                   Q(phone_number__contains=searchstr) |
+                                                   Q(email__icontains=searchstr))
         else:
             results = Customer.objects.all().filter(user=request.user)
         return render(request, 'crm/partials/search_customer.html', {'customers': results})
         
     else: 
         messages.success(request, "You must be logged in to search customers.")
+        return redirect('crm_app:home')
+    
+def SearchTransaction(request):
+    if request.user.is_authenticated:
+        transactions = Transaction.objects.all().filter(user=request.user)
+        searchstr = request.POST.get('search')
+        if searchstr:
+            results = transactions.filter(Q(customer__first_name__icontains=searchstr) | 
+                                          Q(customer__last_name__icontains=searchstr) | 
+                                          Q(description__icontains=searchstr) |
+                                          Q(total__contains=searchstr))
+        else:
+            results = Transaction.objects.all().filter(user=request.user)
+        return render(request, 'crm/partials/search_transaction.html', {'transactions': results})
+        
+    else: 
+        messages.success(request, "You must be logged in to search transactions.")
         return redirect('crm_app:home')

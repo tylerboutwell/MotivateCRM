@@ -1,0 +1,8 @@
+{% for transaction in transactions %}
+<tr>
+<td>{{transaction.customer.first_name}}  {{transaction.customer.last_name}}</td>
+<td>${{transaction.total}}</td>
+<td><a href="{%url 'crm_app:transaction detail' transaction.id%}">{{transaction.description}}</a></td>
+<td>{{transaction.transaction_datetime}}</td>
+</tr>
+{%endfor%}

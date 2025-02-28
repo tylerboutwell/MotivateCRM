@@ -21,7 +21,8 @@ htmx_urlpatterns = [
     path("delete_transaction/<int:pk>/", views.DeleteTransaction, name="delete transaction"),
     path("customer/<int:pk>/update/", views.UpdateCustomerView, name="update customer"),
     path("transaction/<int:pk>/update/", views.UpdateTransactionView, name="update transaction"),
-    path("search_customer/", views.SearchCustomer, name = "search customer"),    
+    path("search_customer/", views.SearchCustomer, name = "search customer"),
+    path("search_transaction/", views.SearchTransaction, name = "search transaction"),      
 ]
 
 urlpatterns += htmx_urlpatterns
