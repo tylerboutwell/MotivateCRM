@@ -5,6 +5,7 @@ from .models import Customer, Transaction
 from django.utils import timezone
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, Field
+import datetime
 
 class AddCustomerForm(forms.ModelForm):
     first_name = forms.CharField(
@@ -112,7 +113,7 @@ class AddTransactionForm(forms.ModelForm):
     customer = forms.ModelChoiceField(queryset=Customer.objects.none(), required=True,empty_label="-- Select Customer --", label="")
     total = forms.IntegerField(required=True, widget=forms.widgets.NumberInput(attrs={"placeholder": "Total", "class": "form-control"}), label="")
     description = forms.CharField(widget=forms.Textarea(attrs={"placeholder": "Enter description here", "class": "form-control"}),label="")
-    transaction_datetime = forms.DateTimeField(required=True, widget=forms.widgets.DateTimeInput(format='%Y-%m-%d %H:%M',attrs={"type": "datetime-local", "class": "form-control"}), initial=timezone.now(),label="")
+    transaction_datetime = forms.DateTimeField(required=True, widget=forms.DateTimeInput(format='%Y-%m-%d %H:%M',attrs={"type": "datetime", "class": "form-control"}), initial=timezone.now,label="")
 
     class Meta:
         model = Transaction
