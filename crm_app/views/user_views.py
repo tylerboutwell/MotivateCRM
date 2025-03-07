@@ -21,15 +21,18 @@ def home(request):
             messages.success(request, "There was an error logging in. Please try again...")
             return redirect('crm_app:home')
     else:
-        customers = Customer.objects.all().filter(user=request.user)
-        transactions = Transaction.objects.all().filter(user=request.user)
-        curr_month = date.today().strftime('%m')
-        curr_year = date.today().strftime('%Y')
-        transactions_curr_year = transactions.filter(transaction_datetime__year=curr_year)
-        transactions_curr_month = transactions.filter(transaction_datetime__month=curr_month).filter(transaction_datetime__year=curr_year)
-        month_sum = transactions_curr_month.aggregate(Sum("total", default=0))['total__sum']
-        year_sum = transactions_curr_year.aggregate(Sum("total", default=0))['total__sum']
-        context = {'customers':customers, 'transactions':transactions, 'transactions_curr_year':transactions_curr_year, 'transactions_curr_month':transactions_curr_month, 'month_sum':month_sum, 'year_sum':year_sum}
+        if request.user.is_authenticated:
+            customers = Customer.objects.all().filter(user=request.user)
+            transactions = Transaction.objects.all().filter(user=request.user)
+            curr_month = date.today().strftime('%m')
+            curr_year = date.today().strftime('%Y')
+            transactions_curr_year = transactions.filter(transaction_datetime__year=curr_year)
+            transactions_curr_month = transactions.filter(transaction_datetime__month=curr_month).filter(transaction_datetime__year=curr_year)
+            month_sum = transactions_curr_month.aggregate(Sum("total", default=0))['total__sum']
+            year_sum = transactions_curr_year.aggregate(Sum("total", default=0))['total__sum']
+            context = {'customers':customers, 'transactions':transactions, 'transactions_curr_year':transactions_curr_year, 'transactions_curr_month':transactions_curr_month, 'month_sum':month_sum, 'year_sum':year_sum}
+        else:
+            context = {}
         return render(request, 'crm/home.html', context)
 
 def logout_user(request):
